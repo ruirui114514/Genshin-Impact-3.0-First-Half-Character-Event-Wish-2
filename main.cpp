@@ -166,7 +166,7 @@ int main()
 				zg=(rand()%(zgf-0+1))+0;
 				
 			}
-			if(/*gai<=0.6||*/(xg<=35&&xbd==true))
+			if(gai<=0.6||(xg<=35&&xbd==true))
 			{
 				type[(l*180+chou)]=5;
 				if(wai==0)
