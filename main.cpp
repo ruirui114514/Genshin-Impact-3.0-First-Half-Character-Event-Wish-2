@@ -16,7 +16,7 @@ int main()
 {
 	ifstream fin("1.dat");
 	setcolor(15,0);
-	srand(time(0));
+	srand(getpid());
 	int wai=(rand()%(1 - 0 +1))+0,gai=(rand()%(100 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,type[11451];
 	bool w=false;
 	int x,chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0;
@@ -244,14 +244,14 @@ int main()
 			if(showt[1]==5&&f==1&&oops=='n')
 			{
 				system("start 1g.mp4");
-				_sleep(6400);
+				Sleep(6400);
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
 			}
 			else if(showt[1]==5&&f==10&&oops=='n')
 			{
 				system("start 10g.mp4");
-				_sleep(6400);
+				Sleep(6400);
 				system("@echo off");
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
@@ -259,7 +259,7 @@ int main()
 			else if(showt[1]==4&&f==1&&oops=='n')
 			{
 				system("start 1p.mp4");
-				_sleep(6400);
+				Sleep(6400);
 				system("@echo off");
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
@@ -267,7 +267,7 @@ int main()
 			else if(showt[1]==4&&f==10&&oops=='n')
 			{
 				system("start 10p.mp4");
-				_sleep(6400);
+				Sleep(6400);
 				system("@echo off");
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
@@ -277,13 +277,13 @@ int main()
 				if(oops=='n')
 				{
 					system("start 1b.mp4");
-					_sleep(6400);
+					Sleep(6400);
 					system("@echo off");
 					system("taskkill /f /im Video.UI.exe");
 					cout<<endl;
 				}
 			}
-		_sleep(200);
+		Sleep(200);
 		for(int i=1;i<=f;i++)
 		{
 			if(showt[i]==3)
