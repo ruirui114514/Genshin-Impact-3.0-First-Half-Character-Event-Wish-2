@@ -33,21 +33,17 @@ int main()
 	char yiyi;
 	string siwu;
 	int xbdg=100;
-	fin>>name>>wz>>wc>>w>>x>>chou>>l>>weijin>>gaoji>>xbd>>xg>>xbdg>>f>>bf>>xun>>sb>>ww>>dbd>>dbdg>>dg>>zbd>>zg>>zgf;
-	int kaishichou=chou+1;
-	int kaishilun=l;
-	fin.close();
-	if(name=="\0")
+	if(!fin)
 	{
 		cout<<"Ð´ÏÂÄãµÄÃû×Ö:"; 
 		cin>>name;
-		kaishichou=1;
-		kaishilun=0;
-		while(system("notepad.exe README.MD"))
-		{
-		
-		}
 	}
+	else {
+		fin>>name>>wz>>wc>>w>>x>>chou>>l>>weijin>>gaoji>>xbd>>xg>>xbdg>>f>>bf>>xun>>sb>>ww>>dbd>>dbdg>>dg>>zbd>>zg>>zgf;
+	}
+	fin.close();
+	int kaishichou=chou+1;
+	int kaishilun=l;
 	while(1)
 	{
 		for(int i=1;i<=40;i++)
