@@ -29,6 +29,7 @@ int main()
 	double sb;
 	int c;
 	system("@echo off");
+	char ww[4]="--";
 	char name[1145];
 	int xbdg=100;
 	if(!fin)
@@ -53,6 +54,7 @@ int main()
 		fin.read((char*)&bf,sizeof(bf));
 		fin.read((char*)&xun,sizeof(xun));
 		fin.read((char*)&sb,sizeof(sb));
+		fin.read((char*)&ww,sizeof(ww));
 		fin.read((char*)&dbd,sizeof(dbd));
 		fin.read((char*)&dbdg,sizeof(dbdg));
 		fin.read((char*)&dg,sizeof(dg));
@@ -70,7 +72,7 @@ int main()
 			cout<<"-";
 		}
 		sb=(l*180+chou)*16;
-		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。第"<<xun<<"抽出的。(就近原则)"<<endl<<"已歪"<<wc<<"次。"<<endl<<"1.单抽  2.十连  3.删除历史并退出  4.保存历史并退出";
+		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。第"<<xun<<"抽出的。"<<endl<<"已歪"<<wc<<"次。第"<<gaoji<<"抽歪的 "<<ww<<"。"<<endl<<"1.单抽  2.十连  3.删除历史并退出  4.保存历史并退出";
 		x=getch();
 		cout<<endl;
 		x-='0';
@@ -108,6 +110,7 @@ int main()
 			fout.write((char*)&bf,sizeof(bf));
 			fout.write((char*)&xun,sizeof(xun));
 			fout.write((char*)&sb,sizeof(sb));
+			fout.write((char*)&ww,sizeof(ww));
 			fout.write((char*)&dbd,sizeof(dbd));
 			fout.write((char*)&dbdg,sizeof(dbdg));
 			fout.write((char*)&dg,sizeof(dg));
@@ -146,8 +149,8 @@ int main()
 		}
 		if(x>4||x<1)
 		{
-			system("cls");
-			continue;
+			cout<<"选项不存在!";
+			f=0;
 		}
 		for(int i=1;i<=f;i++)
 		{
@@ -215,6 +218,7 @@ int main()
 				else
 				{
 					ch[(l*180+chou)]=wa[gw];
+					wa[gw].copy(ww,wa[gw].npos,0);
 					gaoji=l*180+chou;
 					wc++;
 					w=true;
@@ -275,47 +279,52 @@ int main()
 				}
 			}
 		}
-		cout<<"不跳过动画?(1(y)/2(n))";
+		cout<<"跳过动画?(y/n)";
 		oops=getch();
 		cout<<endl;
-		if(showt[1]==5&&f==1&&oops=='1')
+		if(showt[1]==5&&f==1&&oops=='n')
 		{
 			system("start 1g.mp4");
 			Sleep(6400);
 			system("taskkill /f /im Video.UI.exe");
 			cout<<endl;
 		}
-		else if(showt[1]==5&&f==10&&oops=='1')
+		else if(showt[1]==5&&f==10&&oops=='n')
 		{
 			system("start 10g.mp4");
 			Sleep(6400);
+			system("@echo off");
 			system("taskkill /f /im Video.UI.exe");
 			cout<<endl;
 		}
-		else if(showt[1]==4&&f==1&&oops=='1')
+		else if(showt[1]==4&&f==1&&oops=='n')
 		{
 			system("start 1p.mp4");
 			Sleep(6400);
+			system("@echo off");
 			system("taskkill /f /im Video.UI.exe");
 			cout<<endl;
 		}
-		else if(showt[1]==4&&f==10&&oops=='1')
+		else if(showt[1]==4&&f==10&&oops=='n')
 		{
 			system("start 10p.mp4");
 			Sleep(6400);
+			system("@echo off");
 			system("taskkill /f /im Video.UI.exe");
 			cout<<endl;
 		}
 		else
 		{
-			if(oops=='1')
+			if(oops=='n')
 			{
 				system("start 1b.mp4");
 				Sleep(6400);
+				system("@echo off");
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
 			}
 		}
+		Sleep(200);
 		for(int i=1;i<=f;i++)
 		{
 			if(showt[i]==3)
@@ -336,7 +345,5 @@ int main()
 			setcolor(15,0);
 		}
 		cout<<endl<<endl;
-		system("pause");
-		system("cls");
 	}
 }
