@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 #include<windows.h>
+#include<conio.h>
 using namespace std;
 string a[40]={"¿ÂÀ³","µÏ°ÂÄÈ","·ÆĞ»¶û","Â¹Ò°ÔºÆ½²Ø","ÔÆİÀ","¾ÃáªÈÌ","¾ÅÌõôÄÂŞ","ÎåÀÉ","ÔçèÖ","°àÄáÌØ","ÑÌç³","ÂŞÉ¯ÀòÑÇ","É°ÌÇ","ÍĞÂí","ÖØÔÆ","Åµ°¬¶û","Äı¹â","ĞÁìÍ","ĞĞÇï","±±¶·","ÏãÁâ","À×Ôó","°Å°ÅÀ­","¹­²Ø","¼ÀÀñ¹­","¾øÏÒ","Î÷·çÁÔ¹­","ÕÑĞÄ","¼ÀÀñ²ĞÕÂ","Á÷ÀËÀÖÕÂ","Î÷·çÃØµä","Î÷·ç³¤Ç¹","¼ÀÀñ´ó½£","ÖÓ½£","Î÷·ç´ó½£","Ï»ÀïÁúÒ÷","¼ÀÀñ½£","µÑ½£","Î÷·ç½£"};
 string wa[6]={"¿ÌÇç","ÄªÄÈ","ÆßÆß","µÏÂ¬¿Ë","ÇÙ"};
@@ -28,18 +29,38 @@ int main()
 	double sb;
 	int c;
 	system("@echo off");
-	string ww="--";
-	string name="\0";
-	char yiyi;
-	string siwu;
+	char ww[4]="--";
+	char name[1145];
 	int xbdg=100;
 	if(!fin)
 	{
 		cout<<"Ğ´ÏÂÄãµÄÃû×Ö:"; 
-		cin>>name;
+		cin.getline(name,1145); 
 	}
 	else {
-		fin>>name>>wz>>wc>>w>>x>>chou>>l>>weijin>>gaoji>>xbd>>xg>>xbdg>>f>>bf>>xun>>sb>>ww>>dbd>>dbdg>>dg>>zbd>>zg>>zgf;
+		fin.read((char*)&name,sizeof(name));
+		fin.read((char*)&wz,sizeof(wz));
+		fin.read((char*)&wc,sizeof(wc));
+		fin.read((char*)&w,sizeof(w));
+		fin.read((char*)&x,sizeof(x));
+		fin.read((char*)&chou,sizeof(chou));
+		fin.read((char*)&l,sizeof(l));
+		fin.read((char*)&weijin,sizeof(weijin));
+		fin.read((char*)&gaoji,sizeof(gaoji));
+		fin.read((char*)&xbd,sizeof(xbd));
+		fin.read((char*)&xg,sizeof(xg));
+		fin.read((char*)&xbdg,sizeof(xbdg));
+		fin.read((char*)&f,sizeof(f));
+		fin.read((char*)&bf,sizeof(bf));
+		fin.read((char*)&xun,sizeof(xun));
+		fin.read((char*)&sb,sizeof(sb));
+		fin.read((char*)&ww,sizeof(ww));
+		fin.read((char*)&dbd,sizeof(dbd));
+		fin.read((char*)&dbdg,sizeof(dbdg));
+		fin.read((char*)&dg,sizeof(dg));
+		fin.read((char*)&zbd,sizeof(zbd));
+		fin.read((char*)&zg,sizeof(zg));
+		fin.read((char*)&zgf,sizeof(zgf));
 	}
 	fin.close();
 	int kaishichou=chou+1;
@@ -72,7 +93,29 @@ int main()
 		if(x==4)
 		{
 			ofstream fout("1.dat");
-			fout<<name<<" "<<wz<<" "<<wc<<" "<<w<<" "<<x<<" "<<chou<<" "<<l<<" "<<weijin<<" "<<gaoji<<" "<<xbd<<" "<<xg<<" "<<xbdg<<" "<<f<<" "<<bf<<" "<<xun<<" "<<sb<<" "<<ww<<" "<<dbd<<" "<<dbdg<<" "<<dg<<" "<<zbd<<" "<<zg<<" "<<zgf;
+			fout.write((char*)&name,sizeof(name));
+			fout.write((char*)&wz,sizeof(wz));
+			fout.write((char*)&wc,sizeof(wc));
+			fout.write((char*)&w,sizeof(w));
+			fout.write((char*)&x,sizeof(x));
+			fout.write((char*)&chou,sizeof(chou));
+			fout.write((char*)&l,sizeof(l));
+			fout.write((char*)&weijin,sizeof(weijin));
+			fout.write((char*)&gaoji,sizeof(gaoji));
+			fout.write((char*)&xbd,sizeof(xbd));
+			fout.write((char*)&xg,sizeof(xg));
+			fout.write((char*)&xbdg,sizeof(xbdg));
+			fout.write((char*)&f,sizeof(f));
+			fout.write((char*)&bf,sizeof(bf));
+			fout.write((char*)&xun,sizeof(xun));
+			fout.write((char*)&sb,sizeof(sb));
+			fout.write((char*)&ww,sizeof(ww));
+			fout.write((char*)&dbd,sizeof(dbd));
+			fout.write((char*)&dbdg,sizeof(dbdg));
+			fout.write((char*)&dg,sizeof(dg));
+			fout.write((char*)&zbd,sizeof(zbd));
+			fout.write((char*)&zg,sizeof(zg));
+			fout.write((char*)&zgf,sizeof(zgf));
 			fout.close();
 			ifstream in("³é¿¨¼ÇÂ¼.txt");
 			string choukajilu[1145];
@@ -174,7 +217,7 @@ int main()
 				else
 				{
 					ch[(l*180+chou)]=wa[gw];
-					ww=wa[gw];
+					wa[gw].copy(ww,wa[gw].npos,0);
 					gaoji=l*180+chou;
 					wc++;
 					w=true;
@@ -236,49 +279,50 @@ int main()
 			}
 		}
 		cout<<"Ìø¹ı¶¯»­?(y/n)";
-		cin>>oops;
-			if(showt[1]==5&&f==1&&oops=='n')
+		oops=getch();
+		cout<<endl;
+		if(showt[1]==5&&f==1&&oops=='n')
+		{
+			system("start 1g.mp4");
+			Sleep(6400);
+			system("taskkill /f /im Video.UI.exe");
+			cout<<endl;
+		}
+		else if(showt[1]==5&&f==10&&oops=='n')
+		{
+			system("start 10g.mp4");
+			Sleep(6400);
+			system("@echo off");
+			system("taskkill /f /im Video.UI.exe");
+			cout<<endl;
+		}
+		else if(showt[1]==4&&f==1&&oops=='n')
+		{
+			system("start 1p.mp4");
+			Sleep(6400);
+			system("@echo off");
+			system("taskkill /f /im Video.UI.exe");
+			cout<<endl;
+		}
+		else if(showt[1]==4&&f==10&&oops=='n')
+		{
+			system("start 10p.mp4");
+			Sleep(6400);
+			system("@echo off");
+			system("taskkill /f /im Video.UI.exe");
+			cout<<endl;
+		}
+		else
+		{
+			if(oops=='n')
 			{
-				system("start 1g.mp4");
-				Sleep(6400);
-				system("taskkill /f /im Video.UI.exe");
-				cout<<endl;
-			}
-			else if(showt[1]==5&&f==10&&oops=='n')
-			{
-				system("start 10g.mp4");
+				system("start 1b.mp4");
 				Sleep(6400);
 				system("@echo off");
 				system("taskkill /f /im Video.UI.exe");
 				cout<<endl;
 			}
-			else if(showt[1]==4&&f==1&&oops=='n')
-			{
-				system("start 1p.mp4");
-				Sleep(6400);
-				system("@echo off");
-				system("taskkill /f /im Video.UI.exe");
-				cout<<endl;
-			}
-			else if(showt[1]==4&&f==10&&oops=='n')
-			{
-				system("start 10p.mp4");
-				Sleep(6400);
-				system("@echo off");
-				system("taskkill /f /im Video.UI.exe");
-				cout<<endl;
-			}
-			else
-			{
-				if(oops=='n')
-				{
-					system("start 1b.mp4");
-					Sleep(6400);
-					system("@echo off");
-					system("taskkill /f /im Video.UI.exe");
-					cout<<endl;
-				}
-			}
+		}
 		Sleep(200);
 		for(int i=1;i<=f;i++)
 		{
