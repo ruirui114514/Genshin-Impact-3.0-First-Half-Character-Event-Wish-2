@@ -20,12 +20,12 @@ int main()
 	srand(getpid());
 	int wai=(rand()%(1 - 0 +1))+0,gai=(rand()%(100 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,type[11451];
 	bool w=false;
-	int chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0;
+	int x,chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0;
 	int gaoji=0,ziwai=(rand()%(2 - 1 +1))+1;
 	bool xbd=false;
 	int s=(rand()%(12 - 0 +1))+0,f,bf=0,xun=0,xg=100,dg=100,dbdg=100,zg=100,zgf=100;
 	bool dbd=false,zbd=false;
-	char x,oops;
+	char oops;
 	double sb;
 	int c;
 	system("@echo off");
@@ -73,9 +73,8 @@ int main()
 		}
 		sb=(l*180+chou)*16;
 		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。第"<<xun<<"抽出的。"<<endl<<"已歪"<<wc<<"次。第"<<gaoji<<"抽歪的 "<<ww<<"。"<<endl<<"1.单抽  2.十连  3.删除历史并退出  4.保存历史并退出";
-		x=getch();
+		cin>>x;
 		cout<<endl;
-		x-='0';
 		if(x==1)
 		{
 			f=1;
