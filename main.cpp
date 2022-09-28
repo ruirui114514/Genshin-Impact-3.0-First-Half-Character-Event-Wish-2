@@ -75,6 +75,7 @@ int main()
 		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。第"<<xun<<"抽出的。"<<endl<<"已歪"<<wc<<"次。第"<<gaoji<<"抽歪的 "<<ww<<"。"<<endl<<"1.单抽  2.十连  3.删除历史并退出  4.保存历史并退出";
 		x=getch();
 		cout<<endl;
+		x-='0';
 		if(x==1)
 		{
 			f=1;
