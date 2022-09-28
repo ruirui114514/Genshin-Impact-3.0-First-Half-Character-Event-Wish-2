@@ -2,10 +2,10 @@
 #include<windows.h>
 #include<conio.h>
 using namespace std;
-string a[40]={"æŸ¯èŽ±","è¿ªå¥¥å¨œ","è²è°¢å°”","é¹¿é‡Žé™¢å¹³è—","äº‘å ‡","ä¹…å²å¿","ä¹æ¡è£Ÿç½—","äº”éƒŽ","æ—©æŸš","ç­å°¼ç‰¹","çƒŸç»¯","ç½—èŽŽèŽ‰äºš","ç ‚ç³–","æ‰˜é©¬","é‡äº‘","è¯ºè‰¾å°”","å‡å…‰","è¾›ç„±","è¡Œç§‹","åŒ—æ–—","é¦™è±","é›·æ³½","èŠ­èŠ­æ‹‰","å¼“è—","ç¥­ç¤¼å¼“","ç»å¼¦","è¥¿é£ŽçŒŽå¼“","æ˜­å¿ƒ","ç¥­ç¤¼æ®‹ç« ","æµæµªä¹ç« ","è¥¿é£Žç§˜å…¸","è¥¿é£Žé•¿æžª","ç¥­ç¤¼å¤§å‰‘","é’Ÿå‰‘","è¥¿é£Žå¤§å‰‘","åŒ£é‡Œé¾™åŸ","ç¥­ç¤¼å‰‘","ç¬›å‰‘","è¥¿é£Žå‰‘"};
-string wa[6]={"åˆ»æ™´","èŽ«å¨œ","ä¸ƒä¸ƒ","è¿ªå¢å…‹","ç´"};
-string san[14]={"å¼¹å¼“","ç¥žå°„æ‰‹ä¹‹èª“","é¸¦ç¾½å¼“","ç¿¡çŽ‰æ³•çƒ","è®¨é¾™è‹±æ°è°­","é­”å¯¼ç»ªè®º","é»‘ç¼¨æžª","ä»¥ç†æœäºº","æ²æµ´é¾™è¡€çš„å‰‘","é“å½±é˜”å‰‘","é£žå¤©å¾¡å‰‘","é»Žæ˜Žç¥žå‰‘","å†·åˆƒ"};
-string ben="é’Ÿç¦»";
+string a[40]={"¿ÂÀ³","µÏ°ÂÄÈ","·ÆÐ»¶û","Â¹Ò°ÔºÆ½²Ø","ÔÆÝÀ","¾ÃáªÈÌ","¾ÅÌõôÄÂÞ","ÎåÀÉ","ÔçèÖ","°àÄáÌØ","ÑÌç³","ÂÞÉ¯ÀòÑÇ","É°ÌÇ","ÍÐÂí","ÖØÔÆ","Åµ°¬¶û","Äý¹â","ÐÁìÍ","ÐÐÇï","±±¶·","ÏãÁâ","À×Ôó","°Å°ÅÀ­","¹­²Ø","¼ÀÀñ¹­","¾øÏÒ","Î÷·çÁÔ¹­","ÕÑÐÄ","¼ÀÀñ²ÐÕÂ","Á÷ÀËÀÖÕÂ","Î÷·çÃØµä","Î÷·ç³¤Ç¹","¼ÀÀñ´ó½£","ÖÓ½£","Î÷·ç´ó½£","Ï»ÀïÁúÒ÷","¼ÀÀñ½£","µÑ½£","Î÷·ç½£"};
+string wa[6]={"¿ÌÇç","ÄªÄÈ","ÆßÆß","µÏÂ¬¿Ë","ÇÙ"};
+string san[14]={"µ¯¹­","ÉñÉäÊÖÖ®ÊÄ","Ñ»Óð¹­","ôäÓñ·¨Çò","ÌÖÁúÓ¢½ÜÌ·","Ä§µ¼Ð÷ÂÛ","ºÚÓ§Ç¹","ÒÔÀí·þÈË","ãåÔ¡ÁúÑªµÄ½£","ÌúÓ°À«½£","·ÉÌìÓù½£","ÀèÃ÷Éñ½£","ÀäÈÐ"};
+string ben="ÖÓÀë";
 string ch[11451];
 string showj[11];
 int showt[11]; 
@@ -34,7 +34,7 @@ int main()
 	int xbdg=100;
 	if(!fin)
 	{
-		cout<<"å†™ä¸‹ä½ çš„åå­—:"; 
+		cout<<"Ð´ÏÂÄãµÄÃû×Ö:"; 
 		cin.getline(name,1145); 
 	}
 	else {
@@ -72,7 +72,7 @@ int main()
 			cout<<"-";
 		}
 		sb=(l*180+chou)*16;
-		cout<<endl<<endl<<"ä½ å¥½"<<name<<",ä½ å·²æŠ½"<<l*180+chou<<"æŠ½ã€‚"<<endl<<"èŠ±è´¹"<<(l*180+chou)*160<<"åŽŸçŸ³ã€‚"<<endl<<"ç›¸å½“äºŽ"<<sb<<"å…ƒ,æˆ–"<<fixed<<setprecision(2)<<sb/648<<"ä¸ª648ã€‚"<<endl<<"å‡ºäº†"<<bf<<"ä¸ªæœ¬æœŸäº”æ˜Ÿã€‚ç¬¬"<<xun<<"æŠ½å‡ºçš„ã€‚"<<endl<<"å·²æ­ª"<<wc<<"æ¬¡ã€‚ç¬¬"<<gaoji<<"æŠ½æ­ªçš„ "<<ww<<"ã€‚"<<endl<<"1.å•æŠ½  2.åè¿ž  3.åˆ é™¤åŽ†å²å¹¶é€€å‡º  4.ä¿å­˜åŽ†å²å¹¶é€€å‡º";
+		cout<<endl<<endl<<"ÄãºÃ"<<name<<",ÄãÒÑ³é"<<l*180+chou<<"³é¡£"<<endl<<"»¨·Ñ"<<(l*180+chou)*160<<"Ô­Ê¯¡£"<<endl<<"Ïàµ±ÓÚ"<<sb<<"Ôª,»ò"<<fixed<<setprecision(2)<<sb/648<<"¸ö648¡£"<<endl<<"³öÁË"<<bf<<"¸ö±¾ÆÚÎåÐÇ¡£µÚ"<<xun<<"³é³öµÄ¡£"<<endl<<"ÒÑÍá"<<wc<<"´Î¡£µÚ"<<gaoji<<"³éÍáµÄ "<<ww<<"¡£"<<endl<<"1.µ¥³é  2.Ê®Á¬  3.É¾³ýÀúÊ·²¢ÍË³ö  4.±£´æÀúÊ·²¢ÍË³ö";
 		x=getch();
 		cout<<endl;
 		x-='0';
@@ -87,7 +87,7 @@ int main()
 		if(x==3)
 		{
 			system("del 1.dat");
-			system("del æŠ½å¡è®°å½•.txt");
+			system("del ³é¿¨¼ÇÂ¼.txt");
 			system("pause");
 			return 0;
 		}
@@ -118,7 +118,7 @@ int main()
 			fout.write((char*)&zg,sizeof(zg));
 			fout.write((char*)&zgf,sizeof(zgf));
 			fout.close();
-			ifstream in("æŠ½å¡è®°å½•.txt");
+			ifstream in("³é¿¨¼ÇÂ¼.txt");
 			string choukajilu[1145];
 			c=1;
 			while(getline(in,choukajilu[c]))
@@ -126,7 +126,7 @@ int main()
 				++c;
 			}
 			in.close();
-			ofstream out("æŠ½å¡è®°å½•.txt");
+			ofstream out("³é¿¨¼ÇÂ¼.txt");
 			for(int i=1;i<c;i++)
 			{
 				out<<choukajilu[i];
@@ -142,14 +142,14 @@ int main()
 				{
 					continue;
 				}
-				out<<i<<" "<<ch[i]<<" ( "<<type[i]<<" æ˜Ÿ)"<<endl<<endl;
+				out<<i<<" "<<ch[i]<<" ( "<<type[i]<<" ÐÇ)"<<endl<<endl;
 			}
 			system("pause");
 			return 0;
 		}
 		if(x>4||x<1)
 		{
-			cout<<"é€‰é¡¹ä¸å­˜åœ¨!";
+			cout<<"Ñ¡Ïî²»´æÔÚ!";
 			f=0;
 		}
 		for(int i=1;i<=f;i++)
@@ -279,7 +279,7 @@ int main()
 				}
 			}
 		}
-		cout<<"è·³è¿‡åŠ¨ç”»?(y/n)";
+		cout<<"Ìø¹ý¶¯»­?(y/n)";
 		oops=getch();
 		cout<<endl;
 		if(showt[1]==5&&f==1&&oops=='n')
