@@ -2,42 +2,61 @@
 #include<windows.h>
 #include<conio.h>
 using namespace std;
-string a[40]={"柯莱","迪奥娜","菲谢尔","鹿野院平藏","云堇","久岐忍","九条裟罗","五郎","早柚","班尼特","烟绯","罗莎莉亚","砂糖","托马","重云","诺艾尔","凝光","辛焱","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","祭礼弓","绝弦","西风猎弓","昭心","祭礼残章","流浪乐章","西风秘典","西风长枪","祭礼大剑","钟剑","西风大剑","匣里龙吟","祭礼剑","笛剑","西风剑"};
-string wa[6]={"刻晴","莫娜","七七","迪卢克","琴"};
-string san[14]={"弹弓","神射手之誓","鸦羽弓","翡玉法球","讨龙英杰谭","魔导绪论","黑缨枪","以理服人","沐浴龙血的剑","铁影阔剑","飞天御剑","黎明神剑","冷刃"};
+string a[40]= {"柯莱","迪奥娜","菲谢尔","鹿野院平藏","云堇","久岐忍","九条裟罗","五郎","早柚","班尼特","烟绯","罗莎莉亚","砂糖","托马","重云","诺艾尔","凝光","辛焱","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","祭礼弓","绝弦","西风猎弓","昭心","祭礼残章","流浪乐章","西风秘典","西风长枪","祭礼大剑","钟剑","西风大剑","匣里龙吟","祭礼剑","笛剑","西风剑"};
+string wa[6]= {"刻晴","莫娜","七七","迪卢克","琴"};
+string san[14]= {"弹弓","神射手之誓","鸦羽弓","翡玉法球","讨龙英杰谭","魔导绪论","黑缨枪","以理服人","沐浴龙血的剑","铁影阔剑","飞天御剑","黎明神剑","冷刃"};
 string ben="钟离";
+string file;
 string ch[11451];
 string showj[11];
-int showt[11]; 
+stringstream com;
+char command[70];
+int showt[11];
+
 void setcolor(int ForgC, int BackC) {
 	WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
 }
-int main()
-{
-	ifstream fin("1.dat");
-	setcolor(15,0);
-	srand(getpid());
-	int wai=(rand()%(1 - 0 +1))+0,gai=(rand()%(100 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,type[11451];
-	bool w=false;
-	int chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0;
-	int gaoji=0,ziwai=(rand()%(2 - 1 +1))+1;
-	bool xbd=false;
-	int s=(rand()%(12 - 0 +1))+0,f,bf=0,xun=0,xg=100,dg=100,dbdg=100,zg=100,zgf=100;
-	bool dbd=false,zbd=false;
-	char x,oops;
-	double sb;
-	int c;
-	system("@echo off");
-	char ww[4]="--";
-	char name[1145];
-	int xbdg=100;
-	if(!fin)
-	{
-		cout<<"写下你的名字:"; 
-		cin.getline(name,1145); 
+
+double qu(double x,double y) {
+	int wei=1;
+	int t=y;
+	while(t!=0) {
+		wei*=10;
+		t/=10;
 	}
-	else {
+	double a=x+y/wei;
+	int b=a/100;
+	return a-100*b;
+}
+
+int main() {
+	system("title 原神3.0上半角色活动祈愿-2");
+	ifstream fin;
+	setcolor(15,0);
+	srand(time(0));
+	int wai=(rand()%(1 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,type[11451],chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0,gaoji=0,ziwai=(rand()%(2 - 1 +1))+1,s=(rand()%(12 - 0 +1))+0,f,bf=0,zigai=(rand()%(100-1+1))+1,c,sec=0,cols,lines;
+	bool xbd=false,w=false,dbd=false;
+	char x,name[1145];
+	double xbdg=0,sb,dbdg=0,zgf=0,gai=rand();
+	string temp;
+	system("@echo off");
+	fin.open("setting.txt");
+	while(fin>>temp) {
+		if(temp=="wait:") fin>>sec;
+		if(temp=="cols:") fin>>cols;
+		if(temp=="lines:") fin>>lines;
+	}
+	fin.close();
+	com.clear();
+	com<<"mode con cols="<<cols<<" lines="<<lines;
+	com.getline(command,70);
+	system(command);
+	fin.open("data",ios::binary);
+	if(!fin) {
+		cout<<"写下你的名字:";
+		cin.getline(name,1145);
+	} else {
 		fin.read((char*)&name,sizeof(name));
 		fin.read((char*)&wz,sizeof(wz));
 		fin.read((char*)&wc,sizeof(wc));
@@ -48,52 +67,75 @@ int main()
 		fin.read((char*)&weijin,sizeof(weijin));
 		fin.read((char*)&gaoji,sizeof(gaoji));
 		fin.read((char*)&xbd,sizeof(xbd));
-		fin.read((char*)&xg,sizeof(xg));
 		fin.read((char*)&xbdg,sizeof(xbdg));
 		fin.read((char*)&f,sizeof(f));
 		fin.read((char*)&bf,sizeof(bf));
-		fin.read((char*)&xun,sizeof(xun));
 		fin.read((char*)&sb,sizeof(sb));
-		fin.read((char*)&ww,sizeof(ww));
 		fin.read((char*)&dbd,sizeof(dbd));
 		fin.read((char*)&dbdg,sizeof(dbdg));
-		fin.read((char*)&dg,sizeof(dg));
-		fin.read((char*)&zbd,sizeof(zbd));
-		fin.read((char*)&zg,sizeof(zg));
 		fin.read((char*)&zgf,sizeof(zgf));
 	}
 	fin.close();
 	int kaishichou=chou+1;
 	int kaishilun=l;
-	while(1)
-	{
-		for(int i=1;i<=40;i++)
-		{
+	while(1) {
+		for(int i=1; i<=40; i++) {
 			cout<<"-";
 		}
 		sb=(l*180+chou)*16;
-		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。第"<<xun<<"抽出的。"<<endl<<"已歪"<<wc<<"次。第"<<gaoji<<"抽歪的 "<<ww<<"。"<<endl<<"1.单抽  2.十连  3.删除历史并退出  4.保存历史并退出";
+		cout<<endl<<endl<<"你好"<<name<<",你已抽"<<l*180+chou<<"抽。"<<endl<<"花费"<<(l*180+chou)*160<<"原石。"<<endl<<"相当于"<<sb<<"元,或"<<fixed<<setprecision(2)<<sb/648<<"个648。"<<endl<<"出了"<<bf<<"个本期五星。"<<endl<<"已歪"<<wc<<"次。"<<endl<<"1.单抽  2.十连  3.偏好设置  4.删除历史并退出  5.保存历史并退出";
 		x=getch();
 		cout<<endl;
 		x-='0';
-		if(x==1)
-		{
+		if(x==1) {
 			f=1;
 		}
-		if(x==2)
-		{
+		if(x==2) {
 			f=10;
 		}
-		if(x==3)
-		{
-			system("del 1.dat");
+		if(x==3) {
+			ofstream pian("setting.txt",ios::binary);
+			cout<<"恢复默认?(y/n)\n";
+			x=getch();
+			if(x=='y') {
+				pian<<"wait: 0\ncols: 114\nlines: 25";
+				pian.close();
+				sec=0;
+				system("pause");
+				system("mode con cols=114 lines=25");
+				continue;
+			}
+			cout<<"抽卡动画播放时间(ms):";
+			cin>>sec;
+			while(!(sec==0||(sec>=1000&&sec<=6400))) {
+				cout<<"无效!重输:";
+				sec=1;
+				cin>>sec;
+			}
+			pian<<"wait: "<<sec<<endl;
+			cout<<"窗口大小(列):";
+			cin>>lines;
+			pian<<"lines: "<<lines<<endl;
+			cout<<"窗口大小(行):";
+			cin>>cols;
+			pian<<"cols: "<<cols;
+			pian.close();
+			system("pause");
+			com.clear();
+			com<<"mode con cols="<<cols<<" lines="<<lines;
+			com.getline(command,70);
+			system(command);
+			system("cls");
+			continue;
+		}
+		if(x==4) {
+			system("del data");
 			system("del 抽卡记录.txt");
 			system("pause");
 			return 0;
 		}
-		if(x==4)
-		{
-			ofstream fout("1.dat");
+		if(x==5) {
+			ofstream fout("data",ios::binary);
 			fout.write((char*)&name,sizeof(name));
 			fout.write((char*)&wz,sizeof(wz));
 			fout.write((char*)&wc,sizeof(wc));
@@ -104,121 +146,79 @@ int main()
 			fout.write((char*)&weijin,sizeof(weijin));
 			fout.write((char*)&gaoji,sizeof(gaoji));
 			fout.write((char*)&xbd,sizeof(xbd));
-			fout.write((char*)&xg,sizeof(xg));
 			fout.write((char*)&xbdg,sizeof(xbdg));
 			fout.write((char*)&f,sizeof(f));
 			fout.write((char*)&bf,sizeof(bf));
-			fout.write((char*)&xun,sizeof(xun));
 			fout.write((char*)&sb,sizeof(sb));
-			fout.write((char*)&ww,sizeof(ww));
 			fout.write((char*)&dbd,sizeof(dbd));
 			fout.write((char*)&dbdg,sizeof(dbdg));
-			fout.write((char*)&dg,sizeof(dg));
-			fout.write((char*)&zbd,sizeof(zbd));
-			fout.write((char*)&zg,sizeof(zg));
 			fout.write((char*)&zgf,sizeof(zgf));
 			fout.close();
-			ifstream in("抽卡记录.txt");
-			string choukajilu[1145];
-			c=1;
-			while(getline(in,choukajilu[c]))
-			{
-				++c;
-			}
-			in.close();
-			ofstream out("抽卡记录.txt");
-			for(int i=1;i<c;i++)
-			{
-				out<<choukajilu[i];
-				if(i!=c-1)
-				{
-					out<<endl;
-				}
-			}
-			out<<endl;
-			for(int i=(kaishilun*180+kaishichou);i<=(l*180+chou);i++)
-			{
-				if(i==0)
-				{
+			fout.open("抽卡记录.txt",ios::app);
+			for(int i=(kaishilun*180+kaishichou); i<=(l*180+chou); i++) {
+				if(i==0) {
 					continue;
 				}
-				out<<i<<" "<<ch[i]<<" ( "<<type[i]<<" 星)"<<endl<<endl;
+				fout<<i<<" "<<ch[i]<<" ( "<<type[i]<<" 星)"<<endl<<endl;
 			}
 			system("pause");
 			return 0;
 		}
-		if(x>4||x<1)
-		{
-			cout<<"选项不存在!";
-			f=0;
+		if(x>5||x<1) {
+			system("cls");
+			continue;
 		}
-		for(int i=1;i<=f;i++)
-		{
+		for(int i=1; i<=f; i++) {
 			wai=(rand()%(1 - 0 +1))+0;
 			s=(rand()%(12 - 0 +1))+0;
 			gw=(rand()%(4 - 0 +1))+0;
 			z=(rand()%(2 - 0 +1))+0;
 			zw=(rand()%(37 - 4 +1))+4;
-			gai=(rand()%(100 - 0 +1))+0;
+			gai=qu((rand()%(65535-1+1))+1,(rand()%(65535-1+1))+1);
+			zigai=qu((rand()%(65535-1+1))+1,(rand()%(65535-1+1))+1);
 			chou++;
-			if(chou>=180)
-			{
+			if(chou>=180) {
 				chou=0;
 				weijin=0;
 				w=false;
 				l++;
 				xbd=false;
-				xg=100;
 				xbdg=100;
 				dbd=false;
-				dg=100;
 				dbdg=100;
 				wz=0;
-				zbd=false;
-				zg=100;
 				zgf=100;
 			}
-			if(dbd==false&&w==true&&chou>=143&&chou<=180)
-			{
+			if(dbd==false&&w==true&&chou>=143&&chou<=180) {
 				dbd=true;
 			}
-			if(xbd==false&&weijin>=73&&dbd==false)
-			{
+			if(xbd==false&&weijin>=74&&dbd==false) {
 				xbd=true;
 			}
-			if(zbd=false&&wz>=7)
-			{
-				zbd=true;
+			if(xbd==true) {
+				xbdg=(weijin-73)*6.0-0.6;
+				zgf-=35;
 			}
-			if(xbd==true)
-			{
-				xbdg-=15;
-				xg=(rand()%(xbdg-0+1))+0;
+			if(dbd==true) {
+				dbdg=(weijin-73)*6.0-0.6;
+				zgf-=35;
 			}
-			if(dbd==true)
-			{
-				dbdg-=15;
-				dg=(rand()%(dbdg-0+1))+0;
+			if(wz<=7) {
+				zgf=5.1;
 			}
-			if(zbd==true)
-			{
-				zgf-=75;
-				zg=(rand()%(zgf-0+1))+0;
-				
+			if(wz==8) {
+				zgf=56.1;
 			}
-			if(gai<=0.6||(xg<=35&&xbd==true))
-			{
+			if(wz==9) {
+				zgf=100;
+			}
+			if((gai<=0.6&&xbd==false)||(gai<=xbdg&&xbd==true)||weijin==89) {
 				type[(l*180+chou)]=5;
-				if(wai==0)
-				{
+				if(wai==0) {
 					ch[(l*180+chou)]=ben;
-					xun=l*180+chou;
 					bf++;
-				}
-				else
-				{
+				} else {
 					ch[(l*180+chou)]=wa[gw];
-					wa[gw].copy(ww,wa[gw].npos,0);
 					gaoji=l*180+chou;
 					wc++;
 					w=true;
@@ -228,11 +228,9 @@ int main()
 				weijin=0;
 				continue;
 			}
-			if(dg<=20&&dbd==true)
-			{
+			if((gai<=dbdg&&dbd==true)||(weijin==89&&dbd==true)) {
 				type[(l*180+chou)]=5;
 				ch[(l*180+chou)]=ben;
-				xun=l*180+chou;
 				w=false;
 				bf++;
 				xbd=false;
@@ -241,21 +239,16 @@ int main()
 				continue;
 			}
 			weijin++;
-			if((zg<=75&&zbd==true)||(gai>0.6&&gai<=12.6)||wz>=9)
-			{
+			if(zigai<=zgf) {
 				type[(l*180+chou)]=4;
-				if(ziwai<=75)
-				{
+				if(ziwai<=75) {
 					ch[(l*180+chou)]=a[z];
 					ziwai=(rand()%(100 - 0 +1))+0;
-				}
-				else
-				{
+				} else {
 					ch[(l*180+chou)]=a[zw];
 					ziwai=1;
 				}
 				wz=0;
-				zbd=false;
 				continue;
 			}
 			type[(l*180+chou)]=3;
@@ -263,87 +256,57 @@ int main()
 			s=(rand()%(12 - 0 +1))+0;
 			wz++;
 		}
-		for(int i=1;i<=f;i++)
-		{
+		for(int i=1; i<=f; i++) {
 			showj[i]=ch[i+(l*180+chou)-f];
 			showt[i]=type[i+(l*180+chou)-f];
 		}
-		for(int i=1;i<f;i++)
-		{
-			for(int j=f;j>i;j--)
-			{
-				if(showt[j]>showt[j-1])
-				{
+		for(int i=1; i<f; i++) {
+			for(int j=f; j>i; j--) {
+				if(showt[j]>showt[j-1]) {
 					swap(showt[j],showt[j-1]);
 					swap(showj[j],showj[j-1]);
 				}
 			}
 		}
-		cout<<"跳过动画?(y/n)";
-		oops=getch();
 		cout<<endl;
-		if(showt[1]==5&&f==1&&oops=='n')
-		{
-			system("start 1g.mp4");
-			Sleep(6400);
+		if(showt[1]==5&&f==1) {
+			file="1g.mp4";
+		} else if(showt[1]==5&&f==10) {
+			file="10g.mp4";
+		} else if(showt[1]==4&&f==1) {
+			file="1p.mp4";
+		} else if(showt[1]==4&&f==10) {
+			file="10p.mp4";
+		} else {
+			file="1b.mp4";
+		}
+		if(sec>=500) {
+			com.clear();
+			com<<"start ";
+			com<<file;
+			com.getline(command,70);
+			system(command);
+			Sleep(sec);
 			system("taskkill /f /im Video.UI.exe");
 			cout<<endl;
 		}
-		else if(showt[1]==5&&f==10&&oops=='n')
-		{
-			system("start 10g.mp4");
-			Sleep(6400);
-			system("@echo off");
-			system("taskkill /f /im Video.UI.exe");
-			cout<<endl;
-		}
-		else if(showt[1]==4&&f==1&&oops=='n')
-		{
-			system("start 1p.mp4");
-			Sleep(6400);
-			system("@echo off");
-			system("taskkill /f /im Video.UI.exe");
-			cout<<endl;
-		}
-		else if(showt[1]==4&&f==10&&oops=='n')
-		{
-			system("start 10p.mp4");
-			Sleep(6400);
-			system("@echo off");
-			system("taskkill /f /im Video.UI.exe");
-			cout<<endl;
-		}
-		else
-		{
-			if(oops=='n')
-			{
-				system("start 1b.mp4");
-				Sleep(6400);
-				system("@echo off");
-				system("taskkill /f /im Video.UI.exe");
-				cout<<endl;
-			}
-		}
-		Sleep(200);
-		for(int i=1;i<=f;i++)
-		{
-			if(showt[i]==3)
-			{
+		for(int i=1; i<=f; i++) {
+			if(showt[i]==3) {
 				setcolor(11,0);
 				cout<<showj[i]<<"(3) ";
 			}
-			if(showt[i]==4)
-			{
+			if(showt[i]==4) {
 				setcolor(13,0);
 				cout<<showj[i]<<"(4) ";
 			}
-			if(showt[i]==5)
-			{
+			if(showt[i]==5) {
 				setcolor(6,0);
 				cout<<showj[i]<<"(5) ";
 			}
 			setcolor(15,0);
 		}
 		cout<<endl<<endl;
+		system("pause");
+		system("cls");
 	}
 }
