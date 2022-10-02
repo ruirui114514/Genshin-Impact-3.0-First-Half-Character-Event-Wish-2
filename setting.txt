@@ -1,0 +1,3 @@
+wait: 0
+cols: 114
+lines: 25

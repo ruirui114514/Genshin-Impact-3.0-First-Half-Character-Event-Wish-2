@@ -2,16 +2,16 @@
 #include<windows.h>
 #include<conio.h>
 using namespace std;
-string a[40]= {"柯莱","迪奥娜","菲谢尔","鹿野院平藏","云堇","久岐忍","九条裟罗","五郎","早柚","班尼特","烟绯","罗莎莉亚","砂糖","托马","重云","诺艾尔","凝光","辛焱","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","祭礼弓","绝弦","西风猎弓","昭心","祭礼残章","流浪乐章","西风秘典","西风长枪","祭礼大剑","钟剑","西风大剑","匣里龙吟","祭礼剑","笛剑","西风剑"};
-string wa[6]= {"刻晴","莫娜","七七","迪卢克","琴"};
-string san[14]= {"弹弓","神射手之誓","鸦羽弓","翡玉法球","讨龙英杰谭","魔导绪论","黑缨枪","以理服人","沐浴龙血的剑","铁影阔剑","飞天御剑","黎明神剑","冷刃"};
+string* a=new string[40]{"柯莱","迪奥娜","菲谢尔","鹿野院平藏","云堇","久岐忍","九条裟罗","五郎","早柚","班尼特","烟绯","罗莎莉亚","砂糖","托马","重云","诺艾尔","凝光","辛焱","行秋","北斗","香菱","雷泽","芭芭拉","弓藏","祭礼弓","绝弦","西风猎弓","昭心","祭礼残章","流浪乐章","西风秘典","西风长枪","祭礼大剑","钟剑","西风大剑","匣里龙吟","祭礼剑","笛剑","西风剑"};
+string* wa=new string[6]{"刻晴","莫娜","七七","迪卢克","琴"};
+string* san=new string[14]{"弹弓","神射手之誓","鸦羽弓","翡玉法球","讨龙英杰谭","魔导绪论","黑缨枪","以理服人","沐浴龙血的剑","铁影阔剑","飞天御剑","黎明神剑","冷刃"};
 string ben="钟离";
 string file;
-string ch[11451];
-string showj[11];
+string* ch=new string[11451];
+string* showj;
 stringstream com;
 char command[70];
-int showt[11];
+int* showt;
 
 void setcolor(int ForgC, int BackC) {
 	WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
@@ -35,7 +35,8 @@ int main() {
 	ifstream fin;
 	setcolor(15,0);
 	srand(time(0));
-	int wai=(rand()%(1 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,type[11451],chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0,gaoji=0,ziwai=(rand()%(2 - 1 +1))+1,s=(rand()%(12 - 0 +1))+0,f,bf=0,zigai=(rand()%(100-1+1))+1,c,sec=0,cols,lines;
+	int wai=(rand()%(1 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0,gaoji=0,ziwai=(rand()%(2 - 1 +1))+1,s=(rand()%(12 - 0 +1))+0,f,bf=0,zigai=(rand()%(100-1+1))+1,c,sec=0,cols,lines;
+	int* type=new int[11451];
 	bool xbd=false,w=false,dbd=false;
 	char x,name[1145];
 	double xbdg=0,sb,dbdg=0,zgf=0,gai=rand();
@@ -89,9 +90,13 @@ int main() {
 		x-='0';
 		if(x==1) {
 			f=1;
+			showt=new int[2];
+			showj=new string[2];
 		}
 		if(x==2) {
 			f=10;
+			showt=new int[11];
+			showj=new string[11];
 		}
 		if(x==3) {
 			ofstream pian("setting.txt",ios::binary);
@@ -131,6 +136,11 @@ int main() {
 		if(x==4) {
 			system("del data");
 			system("del 抽卡记录.txt");
+			delete []ch;
+			delete []type;
+			delete []a;
+			delete []san;
+			delete []wa;
 			system("pause");
 			return 0;
 		}
@@ -161,6 +171,11 @@ int main() {
 				}
 				fout<<i<<" "<<ch[i]<<" ( "<<type[i]<<" 星)"<<endl<<endl;
 			}
+			delete []ch;
+			delete []type;
+			delete []a;
+			delete []san;
+			delete []wa;
 			system("pause");
 			return 0;
 		}
@@ -305,6 +320,8 @@ int main() {
 			}
 			setcolor(15,0);
 		}
+		delete []showt;
+		delete []showj;
 		cout<<endl<<endl;
 		system("pause");
 		system("cls");
