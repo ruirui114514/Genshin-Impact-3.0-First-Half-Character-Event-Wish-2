@@ -29,7 +29,14 @@ double qu(double x,double y) {
 }
 
 int main(int argc,char* argv[]) {
-	system("title 原神3.0上半角色活动祈愿-2");
+	SetConsoleTitle("原神3.0上半角色活动祈愿-2");
+	ifstream fin("update.bat");
+	ofstream fout;
+	if(fin) {
+		fin.close();
+		system("del update.bat");
+	}
+	fin.close();
 	string canshu="114514";
 	if(argc==2) {
 		canshu=argv[1];
@@ -40,50 +47,73 @@ int main(int argc,char* argv[]) {
 		delete []san;
 		delete []ch;
 		delete []type;
-		ofstream fout("README.md");
+		fout.open("README.md");
 		fout<<"程序作者:bilibili肝锐\n";
 		fout<<"本程序严格按照官方网站的原神祈愿概率公示编写。\n";
 		fout<<"本程序的祈愿动画来自bilibili 难忘的旋律official,十分感谢!\n\n";
 		fout<<"如果不跳过动画,请把默认播放器设为Widows自带的\"电影和电视\"。\n";
 		fout<<"抽卡记录.txt是抽卡记录,欢迎打开查看!\n"; 
-		fout<<"偏好设置的行推荐114,列推荐25\n\n";
+		fout<<"偏好设置的行推荐114,列推荐25\n如果更新失败,请打开start.bat\n";
 		fout<<"2022 版权所有 盗版必究!\n";
+		fout<<"阅读完请关闭。";
 		fout.close();
-		system("README.md");
+		system("notepad README.md");
+		system("pause");
 		system("del README.md");
-		system("pause");
 		return 255;
-	}
-	if(canshu=="-update") {
-		ofstream fout("update.bat");
-		fout<<"del main.exe\ndel 1b.mp4\ndel 1p.mp4\ndel 1g.mp4\ndel 10p.mp4\ndel 10g.mp4\npowershell curl -o 7z.exe https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/7z.exe\npowershell curl -o data.zip https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/data.zip\nset path=%~dp0\n7z.exe x %path%data.zip -o%path%\ndel /f data.zip";
-		fout.close();
-		cout<<"请打开update.bat以更新。\n";
-		system("pause");
-		return 127;
 	}
 	stringstream com;
 	char command[70];
-	ifstream fin;
 	setcolor(15,0);
 	srand(time(0));
-	int wai=(rand()%(1 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0,gaoji=0,ziwai=(rand()%(2 - 1 +1))+1,s=(rand()%(12 - 0 +1))+0,f,bf=0,zigai=(rand()%(100-1+1))+1,c,sec=0,cols,lines;
+	int up,wai=(rand()%(1 - 0 +1))+0,z=(rand()%(2 - 0 +1))+0,zw=(rand()%(37 - 22 +1))+22,wz=0,wc=0,chou=0,l=0,gw=(rand()%(4 - 0 +1))+0,weijin=0,gaoji=0,ziwai=(rand()%(2 - 1 +1))+1,s=(rand()%(12 - 0 +1))+0,f,bf=0,zigai=(rand()%(100-1+1))+1,c,sec=0,cols,lines;
 	bool xbd=false,w=false,dbd=false;
 	char x,name[1145];
 	double xbdg=0,sb,dbdg=0,zgf=0,gai=rand();
 	string temp;
 	system("@echo off");
-	fin.open("setting.txt");
-	while(fin>>temp) {
-		if(temp=="wait:") fin>>sec;
-		if(temp=="cols:") fin>>cols;
-		if(temp=="lines:") fin>>lines;
+	fin.open("setting.txt",ios::binary);
+	if(fin) {
+		while(fin>>temp) {
+			if(temp=="wait:") fin>>sec;
+			if(temp=="cols:") fin>>cols;
+			if(temp=="lines:") fin>>lines;
+			if(temp=="update:") fin>>up;
+		}
+		fin.close();
+		com.clear();
+		com<<"mode con cols="<<cols<<" lines="<<lines;
+		com.getline(command,70);
+		system(command);
+		if(up==1) {
+			cout<<"正在检查更新中,请稍后。";
+			fout.open("v.bat");
+			fout<<"powershell curl -o v.log https://ghproxy.com/https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/v.log";
+			fout.close();
+			system("v.bat");
+			fin.open("v.log");
+			getline(fin,canshu);
+			fin.close();
+			system("del v.bat");
+			system("del v.log");
+			if(canshu!="v1.1") {
+				delete []a;
+				delete []wa;
+				delete []san;
+				delete []ch;
+				delete []type;
+				fout.open("update.bat");
+				fout<<"del main.exe\ndel setting.txt\ndel 1b.mp4\ndel 1p.mp4\ndel 1g.mp4\ndel 10p.mp4\ndel 10g.mp4\npowershell curl -o 7z.exe https://ghproxy.com/https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/7z.exe\npowershell curl -o 7z.dll https://ghproxy.com/https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/7z.dll\npowershell curl -o data.zip https://ghproxy.com/https://github.com/ruirui114514/Genshin-Impact-3.0-First-Half-Character-Event-Wish-2/releases/download/v1.0/data.zip\nset path=%~dp0\n7z.exe x %path%data.zip -o%path%\ndel /f data.zip\ndel 7z.exe\ndel 7z.dll\nexit";
+				fout.close();
+				system("start update.bat");
+				return 127;
+			}
+		}
 	}
-	fin.close();
-	com.clear();
-	com<<"mode con cols="<<cols<<" lines="<<lines;
-	com.getline(command,70);
-	system(command);
+	else {
+		system("mode con cols=114 lines=25");
+	}
+	system("cls");
 	fin.open("data",ios::binary);
 	if(!fin) {
 		cout<<"写下你的名字:";
@@ -130,12 +160,12 @@ int main(int argc,char* argv[]) {
 			showj=new string[11];
 		}
 		if(x==3) {
-			ofstream pian("setting.txt",ios::binary);
+			fout.open("setting.txt",ios::binary);
 			cout<<"恢复默认?(y/n)\n";
 			x=getch();
 			if(x=='y') {
-				pian<<"wait: 0\ncols: 114\nlines: 25";
-				pian.close();
+				fout<<"wait: 0\ncols: 114\nlines: 25\nupdate: 1";
+				fout.close();
 				sec=0;
 				system("pause");
 				system("mode con cols=114 lines=25");
@@ -148,14 +178,24 @@ int main(int argc,char* argv[]) {
 				sec=1;
 				cin>>sec;
 			}
-			pian<<"wait: "<<sec<<endl;
+			fout<<"wait: "<<sec<<endl;
 			cout<<"窗口大小(列):";
 			cin>>lines;
-			pian<<"lines: "<<lines<<endl;
+			fout<<"lines: "<<lines<<endl;
 			cout<<"窗口大小(行):";
 			cin>>cols;
-			pian<<"cols: "<<cols;
-			pian.close();
+			fout<<"cols: "<<cols<<endl;
+			cout<<"更新(1/0)";
+			cin>>up;
+			while(up!=1&&up!=0) {
+				cout<<"无效!重输:";
+				cin>>up;
+			}	
+			fout<<"update: "<<up;
+			if(up==1) {
+				cout<<"请重启以更新。";
+			}
+			fout.close();
 			system("pause");
 			com.clear();
 			com<<"mode con cols="<<cols<<" lines="<<lines;
@@ -181,7 +221,7 @@ int main(int argc,char* argv[]) {
 			return 0;
 		}
 		if(x==5) {
-			ofstream fout("data",ios::binary);
+			fout.open("data",ios::binary);
 			fout.write((char*)&name,sizeof(name));
 			fout.write((char*)&wz,sizeof(wz));
 			fout.write((char*)&wc,sizeof(wc));
@@ -279,7 +319,7 @@ int main(int argc,char* argv[]) {
 				weijin=0;
 				continue;
 			}
-			if((gai<=dbdg&&dbd==true)||(weijin==89&&dbd==true)) {
+			if((gai<=dbdg&&dbd==true)||(weijin==89&&dbd==true)||(gai<=0.6&&w==true&&dbd==false)) {
 				type[(l*180+chou)]=5;
 				ch[(l*180+chou)]=ben;
 				w=false;
